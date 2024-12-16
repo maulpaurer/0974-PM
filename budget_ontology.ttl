@@ -1,0 +1,40 @@
+@prefix ex: <http://example.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Define categories and their threshold values
+ex:Groceries a ex:Category ;
+    ex:thresholdValue "400"^^xsd:decimal .
+
+ex:Entertainment a ex:Category ;
+    ex:thresholdValue "150"^^xsd:decimal .
+
+ex:Clothes a ex:Category ;
+    ex:thresholdValue "200"^^xsd:decimal .
+
+ex:Rent a ex:Category ;
+    ex:thresholdValue "1200"^^xsd:decimal .
+
+ex:Insurance a ex:Category ;
+    ex:thresholdValue "200"^^xsd:decimal .
+
+ex:Car a ex:Category ;
+    ex:thresholdValue "700"^^xsd:decimal .
+
+# Define budget rules
+ex:BudgetRule1 a ex:BudgetRule ;
+    ex:appliesTo ex:Entertainment ;
+    ex:relation ex:LessThanOrEqualTo ;
+    ex:percentageOf ex:Groceries ;
+    ex:percentageValue "50"^^xsd:decimal .
+
+ex:BudgetRule2 a ex:BudgetRule ;
+    ex:appliesTo ex:Clothes ;
+    ex:relation ex:LessThanOrEqualTo ;
+    ex:percentageOf ex:Rent ;
+    ex:percentageValue "20"^^xsd:decimal .
+
+ex:BudgetRule3 a ex:BudgetRule ;
+    ex:appliesTo ex:Car ;
+    ex:relation ex:LessThanOrEqualTo ;
+    ex:percentageOf ex:Insurance ;
+    ex:percentageValue "80"^^xsd:decimal .
